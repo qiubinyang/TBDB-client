@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-BASE_LOG_DIR = "low-logs/"
+BASE_LOG_DIR = "logs/"
 
 sns.set_style("whitegrid")
 sns.set_context(context="paper", font_scale=3.0, rc={"lines.linewidth": 3})

@@ -9,19 +9,17 @@ import math
 import numpy as np
 
 baseURL = "http://127.0.0.1:8866"
-# name = "/iot_anomaly_detection"
+name = "/iot_anomaly_detection"
 # name = "/translate"
-name = "/image_classify"
+# name = "/image_classify"
 
 # tracker[datetime] = [trigger size, trigger ddl, total delay]
 tracker = {}
 
 random.seed(100)
 
-# data = [random.random() for _ in range(152)]
-
-data = np.load("test/mnist.npy").flatten().tolist()
-
+data = [random.random() for _ in range(152)]
+# data = np.load("test/mnist.npy").flatten().tolist()
 # data = [4] * random.randint(20, 50)
 
 def get_now():
@@ -51,6 +49,7 @@ def warm_up():
     })
 
 
+# --- Warm Up ---
 # print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "Warm Up")
 # warm_up_task = []
 # for _ in range(8):
@@ -80,5 +79,5 @@ print("总体平均时延：", round(1000*sum(delays) / len(delays)), "ms")
 result = pd.DataFrame(tracker).T.reset_index().rename(
     columns={'index': 'time', 0: 'size', 1: 'limit', 2: 'delay_sum'})
 
-# result.to_csv("high-logs/logs.csv")
+result.to_csv("high-logs/logs.csv")
 # result.to_csv("high-logs/fixed-logs.csv")
